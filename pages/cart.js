@@ -21,7 +21,7 @@ const Cart = () => {
     // const submitedOrder = await axios.post("http://localhost:8080/createOrder");
     await axios({
       method: "post",
-      url: "http://localhost:8080/createOrder",
+      url: "https://arcane-springs-88980.herokuapp.com/createOrder",
       headers: {},
       data: data,
     });

@@ -29,9 +29,11 @@ const Staff = () => {
   console.log("today", moment().format("DD/MM/YYYY"));
   useEnhancedEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get("http://localhost:8080/getorders");
+      const result = await axios.get(
+        "https://arcane-springs-88980.herokuapp.com/getorders"
+      );
       const todayOrderQuantities = await axios.get(
-        "http://localhost:8080/getTodayOrderQuantity"
+        "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity"
       );
 
       // console.log("result", result.data.data);
