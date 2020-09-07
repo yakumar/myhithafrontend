@@ -20,10 +20,12 @@ import Layout from "../components/Layout";
 import ShopBox from "../components/shopBox";
 import { observer, useObserver, inject } from "mobx-react";
 import { useStores } from "../hooks/use-stores";
+import Router, { useRouter } from "next/router";
 
 const Shop = () => {
   const [quant, setQuant] = useState(1);
   const { cartStore } = useStores();
+  const router = useRouter();
 
   const onBtnClick = (vals) => {
     // console.log("from parent", vals);
@@ -91,6 +93,9 @@ const Shop = () => {
               onBtnClick={onBtnClick}
             />
           </Box>
+          <Button onClick={() => router.push("/cart")}>
+            Checkout from Shopping cart
+          </Button>
         </Box>
       </Box>
     </Layout>
