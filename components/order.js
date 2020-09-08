@@ -19,7 +19,7 @@ import "jspdf-autotable";
 import { newImage } from "../images/image";
 
 const Order = (props) => {
-  // console.log(props.order.order_details);
+  console.log("From Order for PDF", props.order);
   const products = props.order.order_details;
 
   const date = props.order.order_date;
@@ -32,7 +32,8 @@ const Order = (props) => {
   // console.log("order date", newDM);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const printOrder = (orderList) => {
+  ////**** PDF PRINT  */
+  const printOrder = (orderList, priceOfOrder) => {
     let bigArray = [];
     let companyImg = new Image();
     companyImg.src = "../images/myHitha.jpeg";
@@ -65,7 +66,15 @@ const Order = (props) => {
 
     doc.autoTable({
       startY: 120,
-      head: [["Name of the product", "quantity", "price", "total"]],
+      head: [
+        [
+          "Name of the product",
+          "quantity",
+          "price",
+          "quantity_type",
+          "Calc Price",
+        ],
+      ],
       body: bigArray,
     });
 
@@ -75,7 +84,7 @@ const Order = (props) => {
       bodyStyles: { fontSize: 15, fontStyle: "italic" },
 
       // head: [[""], [""]],
-      body: [["Total :", "200"]],
+      body: [["Total :", priceOfOrder]],
     });
 
     doc.save("order.pdf");
@@ -93,15 +102,21 @@ const Order = (props) => {
         </Box>
         <tbody>
           <tr>
-            <td>{newDM}</td>
-            <td>{props.order.cost_of_order}</td>
-            <td>{props.order.status}</td>
-            <td>
+            <Box as="td" pr=".4rem">
+              {newDM}
+            </Box>
+            <Box as="td" pr=".4rem">
+              {props.order.cost_of_order}
+            </Box>
+            <Box as="td" pr=".4rem">
+              {props.order.status}
+            </Box>
+            <Box as="td">
               {" "}
               <Button onClick={onOpen} p=".2rem">
                 view order
               </Button>
-            </td>
+            </Box>
             <Modal isOpen={isOpen} onClose={onClose} isCentered="true">
               <ModalOverlay />
               <ModalContent textAlign="center" backgroundColor="bg1">
@@ -109,7 +124,13 @@ const Order = (props) => {
                 <ModalCloseButton />
                 <ModalBody>
                   <OrderLine orderDate={newDM} propys={props} />
-                  <Button onClick={() => printOrder(products)}>print</Button>
+                  <Button
+                    onClick={() =>
+                      printOrder(products, props.order.cost_of_order)
+                    }
+                  >
+                    print
+                  </Button>
                 </ModalBody>
 
                 <ModalFooter>

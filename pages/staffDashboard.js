@@ -63,8 +63,8 @@ const Staff = () => {
     <Box
       textAlign="center"
       marginX={["10rem", "20rem", "25rem", "30rem"]}
-      marginLeft={["6rem", "10rem", "20rem", "25rem"]}
-      overflow="hidden"
+      marginLeft={["1rem", "10rem", "20rem", "25rem"]}
+      // overflow="hidden"
     >
       <h3>Staff Dashboard</h3>
       <Text>Customer Orders</Text>

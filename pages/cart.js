@@ -41,17 +41,22 @@ const Cart = () => {
         <Box
           d="flex"
           flexDirection="row"
-          justifyContent="space-around"
+          justifyContent={["center", "space-around"]}
           alignItems="center"
         >
           <Heading as="h4" fontSize="1.2rem">
             {" "}
             product
           </Heading>
-          <Heading as="h4" fontSize="1.2rem" pl="2rem">
+          <Heading as="h4" fontSize="1.2rem" pl={["1rem", "2rem"]}>
             quantity{" "}
           </Heading>
-          <Heading as="h4" fontSize="1.2rem">
+          <Heading
+            as="h4"
+            fontSize="1.2rem"
+            pl={["1rem", ""]}
+            pr={["2rem", "2rem"]}
+          >
             price{" "}
           </Heading>
           <Heading as="h4" fontSize="1.2rem">
@@ -65,8 +70,10 @@ const Cart = () => {
               key={product.name}
               d="flex"
               flexDirection="row"
-              justifyContent="space-around"
+              justifyContent={["center", "space-around"]}
               alignItems="center"
+              px={["1rem", ""]}
+              ml={["3rem", ""]}
             >
               {product.name == "tomato" ? (
                 <Image
@@ -88,14 +95,14 @@ const Cart = () => {
               <Box
                 d="flex"
                 flexDirection="row"
-                justifyContent="space-around"
+                justifyContent={["center", "space-around"]}
                 alignItems="space-between"
               >
-                <Heading as="h3" pr="4rem">
+                <Heading as="h3" pr={["1rem", "4rem"]}>
                   {product.name}
                 </Heading>
 
-                <Heading as="h3" pr="16rem">
+                <Heading as="h3" pr={["4rem", "16rem"]}>
                   {product.quantity}
                 </Heading>
                 <Heading as="h2" mr="1rem" ml="-2rem">

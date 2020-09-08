@@ -93,7 +93,7 @@ const Shop = () => {
               onBtnClick={onBtnClick}
             />
           </Box>
-          <Button onClick={() => router.push("/cart")}>
+          <Button onClick={() => router.push("/cart")} mt={["-10rem", "-2rem"]}>
             Checkout from Shopping cart
           </Button>
         </Box>

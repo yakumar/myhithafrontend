@@ -11,7 +11,7 @@ const Header = (props) => {
           backgroundColor="bg2"
           m="1rem"
           cursor="pointer"
-          ml="29rem"
+          ml={["3rem", "29rem"]}
         >
           Place an Order
         </Button>
