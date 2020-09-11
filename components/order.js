@@ -20,7 +20,10 @@ import { newImage } from "../images/image";
 
 const Order = (props) => {
   console.log("From Order for PDF", props.order);
-  const products = props.order.order_details;
+  const products = props.order.order_details.veggies;
+  const address = props.order.customer_address;
+  const phone = props.order.customer_phone;
+  const name = props.order.customer_name;
 
   const date = props.order.order_date;
   // const newD = moment.utc(date).format("DD/MM/YYYY");
@@ -33,7 +36,7 @@ const Order = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   ////**** PDF PRINT  */
-  const printOrder = (orderList, priceOfOrder) => {
+  const printOrder = (orderList, priceOfOrder, order_id, phony, addr) => {
     let bigArray = [];
     let companyImg = new Image();
     companyImg.src = "../images/myHitha.jpeg";
@@ -42,7 +45,16 @@ const Order = (props) => {
       console.log("productMap :", productMap);
       var cost = productMap.removed_stock_quantity * productMap.each_price;
       console.log("cost of each", cost);
-      let smallArray = Object.values(productMap);
+
+      let newObj = {};
+      newObj["name"] = productMap["name"];
+      newObj["weight"] = productMap["weight"];
+      newObj["type"] = productMap["quantity_type"];
+      newObj["price"] = productMap["price"];
+      newObj["quantity"] = productMap["quantity"];
+      newObj["cPrice"] = productMap["cPrice"];
+
+      let smallArray = Object.values(newObj);
       smallArray.push(cost);
       bigArray.push(smallArray);
 
@@ -63,15 +75,25 @@ const Order = (props) => {
 
     // doc.setFontType("normal");
     // doc.text(20, 60, "This is the second title.");
+    doc.setFontSize(20);
+
+    doc.text(320, 90, `Order id: ${order_id}`, { align: "center" });
+
+    doc.setFontSize(13);
+
+    doc.text(320, 120, `Delivery address: ${addr}`, { align: "center" });
+    doc.text(320, 150, `Customer Contact: ${phony}`, { align: "center" });
 
     doc.autoTable({
-      startY: 120,
+      startY: 170,
       head: [
         [
           "Name of the product",
+          "weight",
+          "type",
+          "each price",
           "quantity",
-          "price",
-          "quantity_type",
+
           "Calc Price",
         ],
       ],
@@ -87,6 +109,13 @@ const Order = (props) => {
       body: [["Total :", priceOfOrder]],
     });
 
+    doc.setFontSize(13);
+
+    doc.text(320, 370, `************************`, { align: "center" });
+    doc.text(320, 380, `pay thru Phone pe : Number - 999999999`, {
+      align: "center",
+    });
+
     doc.save("order.pdf");
   };
 
@@ -95,6 +124,7 @@ const Order = (props) => {
       <table>
         <Box as="thead" backgroundColor="bg2">
           <tr>
+            <th>S.No</th>
             <th>Ordered on</th>
             <th>Total Cost</th>
             <th>Order status</th>
@@ -102,6 +132,9 @@ const Order = (props) => {
         </Box>
         <tbody>
           <tr>
+            <Box as="td" pr=".4rem">
+              <h4>{props.index}</h4>
+            </Box>
             <Box as="td" pr=".4rem">
               {newDM}
             </Box>
@@ -120,13 +153,24 @@ const Order = (props) => {
             <Modal isOpen={isOpen} onClose={onClose} isCentered="true">
               <ModalOverlay />
               <ModalContent textAlign="center" backgroundColor="bg1">
-                <ModalHeader>Modal Title</ModalHeader>
+                <ModalHeader>Detail order</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                  <OrderLine orderDate={newDM} propys={props} />
+                  <OrderLine
+                    orderDate={newDM}
+                    name={name}
+                    phone={phone}
+                    propys={props}
+                  />
                   <Button
                     onClick={() =>
-                      printOrder(products, props.order.cost_of_order)
+                      printOrder(
+                        products,
+                        props.order.cost_of_order,
+                        props.order.order_id,
+                        phone,
+                        address
+                      )
                     }
                   >
                     print
@@ -137,7 +181,6 @@ const Order = (props) => {
                   <Button variantColor="blue" mr={3} onClick={onClose}>
                     Close
                   </Button>
-                  <Button variant="ghost">Secondary Action</Button>
                 </ModalFooter>
               </ModalContent>
             </Modal>
@@ -156,25 +199,16 @@ class OrderLine extends React.Component {
       <Box as="table" textAlign="center" px="2rem" py="2rem">
         <Box as="thead" backgroundColor="bg2">
           <tr>
-            <th>Ordered on</th>
-            <th>Total Cost</th>
+            <th>Customer Name</th>
+            <th>Customer phone</th>
             <th>Order status</th>
           </tr>
         </Box>
         <tbody>
           <tr>
-            <td>{this.props.orderDate}</td>
-            <td>{this.props.propys.order.cost_of_order}</td>
+            <td>{this.props.name}</td>
+            <td>{this.props.phone}</td>
             <td>{this.props.propys.order.status}</td>
-            <table>
-              <Box as="thead">
-                <tr>
-                  <th>Name</th>
-                  <th>Item quantity</th>
-                  <th>each item price</th>
-                </tr>
-              </Box>
-            </table>
           </tr>
         </tbody>
       </Box>

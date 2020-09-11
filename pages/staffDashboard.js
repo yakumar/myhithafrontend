@@ -109,11 +109,11 @@ const Staff = () => {
       <Box marginY="3rem">
         <h4>Today Purchase Orders</h4>
         <List>
-          {todayQuan.map((order) => {
+          {todayQuan.map((order, index) => {
             return (
               <Box as="div" key={order.order_id}>
                 <ListItem>
-                  <TodayOrderQuan order={order} />
+                  <TodayOrderQuan order={order} index={index} />
                 </ListItem>
               </Box>
             );
