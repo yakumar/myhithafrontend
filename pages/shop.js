@@ -80,7 +80,7 @@ const Shop = () => {
               name="tomato"
               image="https://www.healthline.com/hlcmsresource/images/AN_images/tomatoes-1200x628-facebook.jpg"
               quantity="250"
-              quantity_type="grams"
+              quantity_type=" grams"
               price={20.0}
               onBtnClick={onBtnClick}
             />
@@ -88,8 +88,16 @@ const Shop = () => {
               name="beans"
               image="https://images-na.ssl-images-amazon.com/images/I/41vOZlnUQYL._SX466_.jpg"
               quantity="250"
-              quantity_type="grams"
+              quantity_type=" grams"
               price={10.0}
+              onBtnClick={onBtnClick}
+            />
+            <ShopBox
+              name="papaya"
+              image="https://www.healthline.com/hlcmsresource/images/AN_images/papaya-benefits-1200x628-facebook.jpg"
+              quantity="1"
+              quantity_type=" Unit"
+              price={30.0}
               onBtnClick={onBtnClick}
             />
           </Box>

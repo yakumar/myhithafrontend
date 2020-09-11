@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Box, Heading, Image, Divider, Button } from "@chakra-ui/core";
+import {
+  Box,
+  Heading,
+  Image,
+  Divider,
+  Button,
+  Input,
+  Textarea,
+  Text,
+} from "@chakra-ui/core";
 import Layout from "../components/Layout";
 import { useStores } from "../hooks/use-stores";
 import { observer, useObserver, inject } from "mobx-react";
@@ -10,6 +19,9 @@ import Router, { useRouter } from "next/router";
 const Cart = () => {
   const { cartStore } = useStores();
   const router = useRouter();
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
 
   const submitOrder = async () => {
     const data = {
@@ -17,6 +29,9 @@ const Cart = () => {
       cost_of_order: cartStore.completeCart["cost"],
       userid: 9,
       payment_type: "Phonepe",
+      customerPhone: phone,
+      customerName: name,
+      customerAddress: address,
     };
     // const submitedOrder = await axios.post("http://localhost:8080/createOrder");
     await axios({
@@ -132,6 +147,42 @@ const Cart = () => {
               ? cartStore.completeCart["cost"]
               : 0}
           </Heading>
+        </Box>
+        <Box
+          textAlign="center"
+          d="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          size="md"
+          rounded="1rem"
+          borderColor="bg3"
+          ml={["-6rem", "4rem", "8rem", "14rem"]}
+          mr={["1rem", "4rem", "2rem", "0rem"]}
+        >
+          <Heading as="h4" marginBottom="1rem">
+            Customer details <Text backgroundColor="blue">*</Text>
+          </Heading>
+          <Input
+            placeholder="Customer Name"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            marginBottom="2rem"
+          />
+          <Textarea
+            placeholder="Customer Address"
+            type="text"
+            onChange={(e) => setAddress(e.target.value)}
+            value={address}
+            marginBottom="2rem"
+          />
+          <Input
+            placeholder="Contact number"
+            type="number"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+          />
         </Box>
         <Button onClick={() => submitOrder()}>Submit Order</Button>
       </Box>
