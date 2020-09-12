@@ -86,8 +86,8 @@ const AddVeg = () => {
   };
   return (
     <Layout>
-      <Box textAlign="center">
-        <Heading>Add a Vegetable / Fruit / DryFruit</Heading>
+      <Box textAlign="center" m={["1rem", ""]}>
+        <Heading mb={["10rem", ""]}>Add a Vegetable / Fruit / DryFruit</Heading>
         <Box
           textAlign="center"
           d="flex"
@@ -97,18 +97,20 @@ const AddVeg = () => {
           size="md"
           rounded="1rem"
           borderColor="bg3"
-          ml={["-6rem", "4rem", "8rem", "22rem"]}
+          ml={["-1rem", "4rem", "8rem", "22rem"]}
           mr={["1rem", "4rem", "2rem", "auto"]}
+          pt={["3rem", ""]}
         >
           <Text as="i">Item Name</Text>
           <Input
+            p="1.5rem"
             placeholder="item name"
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
             marginBottom="2rem"
           />
-          <Box d="flex" flexDirection="row">
+          <Box d="flex" flexDirection={["column", "row"]}>
             <Text as="i">quantity</Text>
             <Input
               placeholder="quantity eg.. 250 or 1"
@@ -126,7 +128,7 @@ const AddVeg = () => {
               marginBottom="2rem"
             />
           </Box>
-          <Box d="flex" flexDirection="row">
+          <Box d="flex" flexDirection={["column", "row"]}>
             <Text as="i">quantity type</Text>
             <Select
               placeholder="Select Type"
@@ -159,14 +161,24 @@ const AddVeg = () => {
             <option value="fruits">fruits</option>
             <option value="dryfruits">dry fruits</option>
           </Select>
-          <Box d="flex" flexDirection="row">
+          <Box d="flex" flexDirection={["column", "row"]} mb={["14rem", ""]}>
             <input type="file" onChange={fileUpload} />
 
             <Button onClick={() => imageUploadFunc()}>Upload image</Button>
             {imageUrl.length > 0 ? (
-              <Checkbox defaultIsChecked></Checkbox>
+              <Checkbox
+                textAlign="center"
+                defaultIsChecked
+                ml={["1rem", "1rem"]}
+              ></Checkbox>
             ) : (
-              <Checkbox isDisabled defaultIsChecked></Checkbox>
+              <Checkbox
+                isDisabled
+                defaultIsChecked
+                ml={["1rem", "1rem"]}
+                // height="10em"
+                // width="10rem"
+              ></Checkbox>
             )}
           </Box>
         </Box>
