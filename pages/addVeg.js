@@ -87,7 +87,9 @@ const AddVeg = () => {
   return (
     <Layout>
       <Box textAlign="center" m={["1rem", ""]}>
-        <Heading mb={["10rem", ""]}>Add a Vegetable / Fruit / DryFruit</Heading>
+        <Heading mb={["14rem", "2rem", "2rem"]}>
+          Add a Vegetable / Fruit / DryFruit
+        </Heading>
         <Box
           textAlign="center"
           d="flex"
@@ -109,9 +111,12 @@ const AddVeg = () => {
             onChange={(e) => setName(e.target.value)}
             value={name}
             marginBottom="2rem"
+            width={["15rem", "30rem"]}
           />
           <Box d="flex" flexDirection={["column", "row"]}>
-            <Text as="i">quantity</Text>
+            <Text as="i" px={[".3rem", "1rem"]}>
+              quantity
+            </Text>
             <Input
               placeholder="quantity eg.. 250 or 1"
               type="text"
@@ -119,7 +124,9 @@ const AddVeg = () => {
               value={quantity}
               marginBottom="2rem"
             />
-            <Text as="i">each price</Text>
+            <Text as="i" px={[".3rem", "1rem"]}>
+              each price
+            </Text>
             <Input
               placeholder="price of each eg.. 25.0"
               type="text"
@@ -129,7 +136,9 @@ const AddVeg = () => {
             />
           </Box>
           <Box d="flex" flexDirection={["column", "row"]}>
-            <Text as="i">quantity type</Text>
+            <Text as="i" px={[".3rem", "1rem"]}>
+              quantity type
+            </Text>
             <Select
               placeholder="Select Type"
               mb="2rem"
@@ -139,7 +148,9 @@ const AddVeg = () => {
               <option value="grams">grams</option>
               <option value="unit">unit</option>
             </Select>
-            <Text as="i">In stock</Text>
+            <Text as="i" px={[".3rem", "1rem"]}>
+              In stock
+            </Text>
             <Select
               placeholder="Select Category"
               mb="2rem"
@@ -150,21 +161,32 @@ const AddVeg = () => {
               <option value="no">No</option>
             </Select>
           </Box>
+          <Text as="i" px={[".3rem", "1rem"]}>
+            Category
+          </Text>
 
           <Select
             placeholder="Select Category"
             mb="2rem"
             value={categoryVal}
             onChange={(e) => categoryChange(e)}
+            w={["15rem", ""]}
           >
             <option value="vegetables">Vegetables</option>
             <option value="fruits">fruits</option>
             <option value="dryfruits">dry fruits</option>
           </Select>
-          <Box d="flex" flexDirection={["column", "row"]} mb={["14rem", ""]}>
+          <Box
+            d="flex"
+            flexDirection={["column", "row"]}
+            alignItems="center"
+            mb={["14rem", "3rem"]}
+          >
             <input type="file" onChange={fileUpload} />
 
-            <Button onClick={() => imageUploadFunc()}>Upload image</Button>
+            <Button onClick={() => imageUploadFunc()} my={["1rem", ""]}>
+              Upload image
+            </Button>
             {imageUrl.length > 0 ? (
               <Checkbox
                 textAlign="center"
@@ -182,7 +204,14 @@ const AddVeg = () => {
             )}
           </Box>
         </Box>
-        <Button type="submit" onClick={() => formySubmit()}>
+        <Button
+          type="submit"
+          onClick={() => formySubmit()}
+          my={["1rem", ""]}
+          color="bg3"
+          borderColor="bg3"
+          borderWidth=".2rem"
+        >
           Add Item
         </Button>
       </Box>
