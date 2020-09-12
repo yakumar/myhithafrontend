@@ -8,6 +8,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
   Button,
+  Heading,
 } from "@chakra-ui/core";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -255,14 +256,15 @@ const TestDash = () => {
   return (
     <Box
       textAlign="center"
-      marginX={["10rem", "20rem", "25rem", "30rem"]}
-      marginLeft={["1rem", "10rem", "20rem", "25rem"]}
-      // overflow="hidden"
+      marginX={[".3rem", ".7rem", "8rem", "10rem"]}
+      marginLeft={["0rem", "0rem", "10rem", "23rem"]}
+      mr={[".3rem", ".7rem", "8rem", "1rem"]}
+      overflowX="scroll"
     >
-      <h1>TEST DASH</h1>
-
       <Box>
-        <Text>Customer Orders</Text>
+        <Heading as="h3" size="lg" mt="1rem" textAlign="center">
+          Customer Orders
+        </Heading>
 
         <table id="employee">
           <Box as="thead" backgroundColor="bg4">
@@ -270,16 +272,30 @@ const TestDash = () => {
           </Box>
           <Box as="tbody">{renderBody()}</Box>
         </table>
+
+        {orderArray.length > 0 ? (
+          ""
+        ) : (
+          <CircularProgress isIndeterminate color="green"></CircularProgress>
+        )}
       </Box>
 
       <Box marginY="3rem">
-        <h4>Today Purchase Orders</h4>
+        <Heading as="h3" size="lg">
+          Today Purchase Orders
+        </Heading>
         <table id="employee1">
           <Box as="thead" backgroundColor="bg3">
             <Box as="tr">{renderTodayHeader()}</Box>
           </Box>
           <Box as="tbody">{renderTodayBody()}</Box>
         </table>
+
+        {todayQuan.length > 0 ? (
+          ""
+        ) : (
+          <CircularProgress isIndeterminate color="green"></CircularProgress>
+        )}
       </Box>
     </Box>
   );

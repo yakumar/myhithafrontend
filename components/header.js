@@ -5,6 +5,17 @@ import Link from "next/link";
 const Header = (props) => {
   return (
     <Box backgroundColor="bg1" h="4rem">
+      <Link href="/">
+        <Button
+          as="a"
+          backgroundColor="bg2"
+          m="1rem"
+          cursor="pointer"
+          ml={["0rem", "", ""]}
+        >
+          Home
+        </Button>
+      </Link>
       <Link href="/shop">
         <Button
           as="a"
@@ -21,8 +32,9 @@ const Header = (props) => {
           as="a"
           backgroundColor="bg2"
           m="1rem"
+          mt={["0rem", "0rem", "-5rem", "1rem"]}
           cursor="pointer"
-          ml={["1rem", "5rem", "4rem", "2rem"]}
+          ml={["0rem", "2rem", "3rem", "1rem"]}
           w={["4.5rem", "5rem", "6rem", "7rem"]}
         >
           Add item
