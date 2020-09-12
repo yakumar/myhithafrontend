@@ -63,22 +63,6 @@ const Staff = () => {
     // console.log("result useeffect");
   }, []);
 
-  const fileUpload = (event) => {
-    console.log(event.target.files[0]);
-    setImageUpload(event.target.files[0]);
-  };
-  const imageUploadFunc = () => {
-    let fd = new FormData();
-    fd.append("file", imageUpload);
-    fd.append("api_key", "754257536857617");
-    fd.append("upload_preset", "gpnk0lxa");
-
-    axios
-      .post("https://api.cloudinary.com/v1_1/reactindia/image/upload", fd)
-      .then((data) => setImageUrl(data.data.secure_url))
-      .catch((e) => console.log(e));
-  };
-
   // cloudinary.uploader.upload(imageUpload).then((dat) => console.log(dat));
 
   return (

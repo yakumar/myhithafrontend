@@ -11,9 +11,21 @@ const Header = (props) => {
           backgroundColor="bg2"
           m="1rem"
           cursor="pointer"
-          ml={["3rem", "29rem"]}
+          ml={["3rem", "10rem", "29rem"]}
         >
-          Place an Order
+          Place Order
+        </Button>
+      </Link>
+      <Link href="/addVeg">
+        <Button
+          as="a"
+          backgroundColor="bg2"
+          m="1rem"
+          cursor="pointer"
+          ml={["1rem", "5rem", "4rem", "2rem"]}
+          w={["4.5rem", "5rem", "6rem", "7rem"]}
+        >
+          Add item
         </Button>
       </Link>
     </Box>

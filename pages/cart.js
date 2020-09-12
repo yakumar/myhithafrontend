@@ -182,6 +182,8 @@ const Cart = () => {
             type="number"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+            onInput={(e) => (e.target.value = e.target.value.slice(0, 10))}
+            isRequired={true}
           />
         </Box>
         <Button onClick={() => submitOrder()}>Submit Order</Button>
