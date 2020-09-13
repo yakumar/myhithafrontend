@@ -44,7 +44,7 @@ const TestDash = () => {
         "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity"
       );
 
-      // console.log("result", result.data.data);
+      console.log("result", result.data.data);
       //getTodayOrderQuantity
 
       const newArray = result.data.data.filter((val) => {

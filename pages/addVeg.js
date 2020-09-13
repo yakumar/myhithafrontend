@@ -79,7 +79,7 @@ const AddVeg = () => {
         headers: {},
         data: data,
       });
-      router.push("/");
+      router.push("https://myhitha.vercel.app/");
     } catch (e) {
       console.log(e);
     }
