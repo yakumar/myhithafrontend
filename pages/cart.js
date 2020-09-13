@@ -80,6 +80,7 @@ const Cart = () => {
         </Box>
 
         {cartStore.cart.map((product) => {
+          console.log("from Cart:", product);
           return (
             <Box
               key={product.name}
@@ -90,22 +91,12 @@ const Cart = () => {
               px={["1rem", ""]}
               ml={["3rem", ""]}
             >
-              {product.name == "tomato" ? (
-                <Image
-                  w="10rem"
-                  h="6rem"
-                  rounded="1rem"
-                  src="https://www.healthline.com/hlcmsresource/images/AN_images/tomatoes-1200x628-facebook.jpg"
-                />
-              ) : (
-                <Image
-                  w="10rem"
-                  h="6rem"
-                  rounded="1rem"
-                  //   mr="1rem"
-                  src="https://images-na.ssl-images-amazon.com/images/I/41vOZlnUQYL._SX466_.jpg"
-                />
-              )}
+              <Image
+                w="10rem"
+                h="6rem"
+                rounded="1rem"
+                src={product.image_url}
+              />
 
               <Box
                 d="flex"
@@ -193,3 +184,20 @@ const Cart = () => {
 };
 
 export default Cart;
+
+// {product.name == "tomato" ? (
+//   <Image
+//     w="10rem"
+//     h="6rem"
+//     rounded="1rem"
+//     src="https://www.healthline.com/hlcmsresource/images/AN_images/tomatoes-1200x628-facebook.jpg"
+//   />
+// ) : (
+//   <Image
+//     w="10rem"
+//     h="6rem"
+//     rounded="1rem"
+//     //   mr="1rem"
+//     src="https://images-na.ssl-images-amazon.com/images/I/41vOZlnUQYL._SX466_.jpg"
+//   />
+// )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import {
   Box,
   Text,
@@ -21,7 +21,7 @@ import TodayOrderQuan from "../components/todayQuan";
 import moment from "moment";
 
 const useEnhancedEffect =
-  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const TestDash = () => {
   const [orderArray, setOrderArray] = useState([]);
@@ -29,10 +29,6 @@ const TestDash = () => {
   const [todayQuan, setTodayQuan] = useState([]);
 
   const today = moment().format("DD/MM/YYYY");
-
-  const [imageUpload, setImageUpload] = useState(null);
-
-  const [imageUrl, setImageUrl] = useState("");
 
   console.log("today", moment().format("DD/MM/YYYY"));
   useEnhancedEffect(() => {

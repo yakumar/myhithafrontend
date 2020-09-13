@@ -18,7 +18,7 @@ export class CartStore {
 
   @action
   addToCart(product) {
-    console.log("added product:", product);
+    console.log("added product from cartstore:", product);
 
     // this.cart = toJS(this.cart);
     // this.completeCart = toJS(this.completeCart);

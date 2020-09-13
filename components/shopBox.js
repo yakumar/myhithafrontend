@@ -19,7 +19,7 @@ import { set } from "mobx";
 const ShopBox = observer((props) => {
   const { cartStore } = useStores();
   const [quant, setQuant] = useState(1);
-  console.log("set state quant", quant);
+  console.log("from Shop Box", props);
 
   const addVal = () => {
     setQuant(quant + 1);
@@ -100,6 +100,7 @@ const ShopBox = observer((props) => {
                 quantity: quant,
                 price: props.price,
                 quantity_type: props.quantity_type,
+                image_url: props.image,
               };
               props.onBtnClick(product);
             }}
