@@ -53,7 +53,7 @@ const Shop = () => {
         "https://arcane-springs-88980.herokuapp.com/getVeg"
       );
 
-      console.log("result", result.data.data);
+      // console.log("result", result.data.data);
       //getTodayOrderQuantity
 
       // if (!newArray.length) {
@@ -104,6 +104,7 @@ const Shop = () => {
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
+            flexWrap="wrap"
           >
             {shopItems.map((item) => {
               return (

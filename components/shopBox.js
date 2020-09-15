@@ -19,7 +19,7 @@ import { set } from "mobx";
 const ShopBox = observer((props) => {
   const { cartStore } = useStores();
   const [quant, setQuant] = useState(1);
-  console.log("from Shop Box", props);
+  // console.log("from Shop Box", props);
 
   const addVal = () => {
     setQuant(quant + 1);

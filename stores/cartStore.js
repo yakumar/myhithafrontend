@@ -18,16 +18,16 @@ export class CartStore {
 
   @action
   addToCart(product) {
-    console.log("added product from cartstore:", product);
+    // console.log("added product from cartstore:", product);
 
     // this.cart = toJS(this.cart);
     // this.completeCart = toJS(this.completeCart);
-    console.log("cart arr1:", this.cart);
+    // console.log("cart arr1:", this.cart);
 
     if (this.cart.length > 0) {
       let myproduct = this.cart.find((pro) => pro.name == product.name);
       if (myproduct) {
-        console.log("myproduct :", myproduct);
+        // console.log("myproduct :", myproduct);
 
         myproduct.quantity = myproduct.quantity + product.quantity;
         myproduct.cPrice = myproduct.quantity * myproduct.price;
@@ -51,8 +51,8 @@ export class CartStore {
       this.completeCart = { products: this.cart, cost: this.sum };
     }
 
-    console.log("cart arr:", this.cart);
-    console.log("complete cart", this.completeCart);
+    // console.log("cart arr:", this.cart);
+    // console.log("complete cart", this.completeCart);
 
     return this.cart, this.cart.completeCart;
 
