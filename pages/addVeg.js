@@ -174,7 +174,7 @@ const AddVeg = () => {
           >
             <option value="vegetables">Vegetables</option>
             <option value="fruits">fruits</option>
-            <option value="dryfruits">dry fruits</option>
+            <option value="dry fruits">dry fruits</option>
           </Select>
           <Box
             d="flex"
