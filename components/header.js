@@ -27,7 +27,7 @@ const Header = (props) => {
           Place Order
         </Button>
       </Link>
-      <Link href="/addVeg">
+      <Link href="/vegList">
         <Button
           as="a"
           backgroundColor="bg2"
@@ -37,7 +37,7 @@ const Header = (props) => {
           ml={["0rem", "2rem", "3rem", "1rem"]}
           w={["4.5rem", "5rem", "6rem", "7rem"]}
         >
-          Add item
+          Item List
         </Button>
       </Link>
     </Box>

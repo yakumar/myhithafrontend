@@ -22,6 +22,7 @@ const Cart = () => {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
 
   const submitOrder = async () => {
     const data = {
@@ -32,6 +33,7 @@ const Cart = () => {
       customerPhone: phone,
       customerName: name,
       customerAddress: address,
+      email: email,
     };
     // const submitedOrder = await axios.post("http://localhost:8080/createOrder");
     await axios({
@@ -174,6 +176,14 @@ const Cart = () => {
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
             onInput={(e) => (e.target.value = e.target.value.slice(0, 10))}
+            isRequired={true}
+          />
+          <Input
+            placeholder="Company Email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            // onInput={(e) => (e.target.value = e.target.value.slice(0, 10))}
             isRequired={true}
           />
         </Box>

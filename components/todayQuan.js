@@ -1,18 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Text,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-} from "@chakra-ui/core";
+import { Box, Text, useDisclosure, Button } from "@chakra-ui/core";
 
 import moment from "moment";
 
