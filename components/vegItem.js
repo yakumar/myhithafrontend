@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -12,10 +12,38 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Input,
+  Select,
 } from "@chakra-ui/core";
+import axios from "axios";
+
+import Link from "next/link";
 
 const VegItem = (props) => {
   console.log(props.item);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [editPrice, setEditPrice] = useState(props.item.each_price);
+  const [setStock, setSetStock] = useState(props.item.in_stock);
+
+  const _editClose = () => {
+    _editItem();
+    onClose();
+  };
+
+  const _editItem = async () => {
+    console.log("editing initiated");
+    const data = {
+      todayPrice: editPrice,
+      inStock: setStock,
+      name: props.item.name,
+    };
+    await axios({
+      method: "put",
+      url: "https://arcane-springs-88980.herokuapp.com/updateVeg",
+      headers: {},
+      data: data,
+    });
+  };
 
   return (
     <Box>
@@ -48,13 +76,46 @@ const VegItem = (props) => {
             </Box>
             <Box as="td">
               {" "}
-              <Button onClick={null} p=".2rem">
-                Edit item
-              </Button>
+              <Button onClick={onOpen}>Edit item</Button>
             </Box>
           </tr>
         </tbody>
       </table>
+      <Box>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Edit Item Price/Status</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <h3>MY Esiting body</h3> <form></form>
+              <Input
+                type="text"
+                // defaultValue={props.each_price}
+                value={editPrice}
+                onChange={(e) => setEditPrice(e.target.value)}
+              />
+              <Select
+                placeholder="in stock"
+                defaultValue="yes"
+                onChange={(e) => setSetStock(e.target.value)}
+                // onSubmit={(e) => console.log(e)}
+              >
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+              </Select>
+            </ModalBody>
+            <ModalFooter>
+              <Button variantColor="red" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant="solid" variantColor="green" onClick={_editClose}>
+                Edit db
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Box>
     </Box>
   );
 };
