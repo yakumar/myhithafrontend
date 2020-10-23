@@ -10,7 +10,7 @@ import TestDash from "./testDash";
 export default function Home() {
   return (
     <Layout>
-      <TestDash />
+      <Login />
     </Layout>
   );
 }

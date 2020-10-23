@@ -78,7 +78,7 @@ const VegList = () => {
           <List>
             {orderArray.map((item, index) => {
               return (
-                <Box as="div" key={item.item_id}>
+                <Box as="div" key={item.veggram_id}>
                   <ListItem>
                     <VegItem item={item} index={index} />
                   </ListItem>

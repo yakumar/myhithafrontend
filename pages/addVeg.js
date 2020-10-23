@@ -76,7 +76,7 @@ const AddVeg = () => {
       await axios({
         method: "post",
         url: "https://arcane-springs-88980.herokuapp.com/insertNewVeg",
-        headers: {},
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         data: data,
       });
       router.push("https://myhitha.vercel.app/");

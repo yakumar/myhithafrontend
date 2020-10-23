@@ -24,6 +24,8 @@ const useEnhancedEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const TestDash = () => {
+  const [didMount, setDidMount] = useState(false);
+
   const [orderArray, setOrderArray] = useState([]);
 
   const [todayQuan, setTodayQuan] = useState([]);
@@ -34,10 +36,20 @@ const TestDash = () => {
   useEnhancedEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "https://arcane-springs-88980.herokuapp.com/getorders"
+        "https://arcane-springs-88980.herokuapp.com/getorders",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
       const todayOrderQuantities = await axios.get(
-        "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity"
+        "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
 
       console.log("result", result.data.data);
@@ -62,8 +74,14 @@ const TestDash = () => {
       console.log("today Quan", todayQuan);
     };
     fetchData();
+    setDidMount(true);
+    return () => setDidMount(false);
     // console.log("result useeffect");
   }, []);
+
+  if (!didMount) {
+    return null;
+  }
 
   // cloudinary.uploader.upload(imageUpload).then((dat) => console.log(dat));
   const renderHeader = () => {

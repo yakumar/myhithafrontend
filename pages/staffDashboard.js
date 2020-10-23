@@ -34,10 +34,20 @@ const Staff = () => {
   useEnhancedEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "https://arcane-springs-88980.herokuapp.com/getorders"
+        "https://arcane-springs-88980.herokuapp.com/getorders",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
       const todayOrderQuantities = await axios.get(
-        "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity"
+        "https://arcane-springs-88980.herokuapp.com/getTodayOrderQuantity",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
 
       // console.log("result", result.data.data);

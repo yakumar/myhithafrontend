@@ -1,8 +1,17 @@
 import React from "react";
-import { Box, Button } from "@chakra-ui/core";
+import { Box, Button, IconButton, Icon } from "@chakra-ui/core";
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 
 const Header = (props) => {
+  const router = useRouter();
+  if (typeof window !== "undefined") {
+    console.log("we are running on the client");
+    localStorage.setItem("myCat", "Tom");
+  } else {
+    console.log("we are running on the server");
+  }
+
   return (
     <Box backgroundColor="bg1" h="4rem">
       <Link href="/">

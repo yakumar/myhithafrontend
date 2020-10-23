@@ -39,10 +39,10 @@ const Cart = () => {
     await axios({
       method: "post",
       url: "https://arcane-springs-88980.herokuapp.com/createOrder",
-      headers: {},
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       data: data,
     });
-    router.push("/");
+    router.push("/adminDashboard");
 
     cartStore.cart = [];
     cartStore.completeCart = {};

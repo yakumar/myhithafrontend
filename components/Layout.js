@@ -28,7 +28,7 @@ const Layout = (props) => {
     >
       <Header />
       <Box as="div" h="3rem" backgroundColor="bg2">
-        <Heading>Test Dashboard</Heading>
+        <Heading>Admin Dashboard</Heading>
       </Box>
       {props.children}
     </Box>

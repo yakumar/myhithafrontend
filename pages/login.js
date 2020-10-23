@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Box,
@@ -9,11 +9,48 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Heading,
 } from "@chakra-ui/core";
+import axios from "axios";
+import Router, { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const loggedUser = () => {
+      if (localStorage.getItem("token") != null) {
+        Router.push("/adminDashboard");
+      }
+    };
+    loggedUser();
+  }, []);
+
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
   const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
+  const handleClick = () => {
+    setShow(!show);
+  };
+
+  const submitLogin = async () => {
+    const data = {
+      phone: phone,
+      password: password,
+    };
+    const result = await axios({
+      method: "post",
+      url: "https://arcane-springs-88980.herokuapp.com/signInAdmin",
+      headers: {},
+      data: data,
+    });
+    localStorage.setItem("token", result.data.token);
+    localStorage.setItem("isAdmin", result.data.user.isadmin);
+
+    router.replace("/adminDashboard");
+
+    console.log("result", result.data);
+  };
 
   return (
     <Box>
@@ -30,27 +67,31 @@ const Login = () => {
         borderBottomColor="bg3"
         boxShadow="1rem 2rem bg1"
       >
-        <h2>Login</h2>
+        <Heading as="h2">Admin Login</Heading>
         <FormControl>
-          <FormLabel htmlFor="email">Email address</FormLabel>
+          <FormLabel htmlFor="Phone">Phone</FormLabel>
           <Input
+            value={phone}
             marginX="5rem"
-            type="email"
-            id="email"
+            type="phone"
+            id="phone"
             aria-describedby="email-helper-text"
             w="16rem"
+            onChange={(e) => setPhone(e.target.value)}
           />
           <FormHelperText id="email-helper-text">
-            We'll never share your email.
+            We'll never share your phone.
           </FormHelperText>
           <FormLabel htmlFor="password">password</FormLabel>
 
           <InputGroup size="md" marginX="5rem" w="18rem">
             <Input
+              value={password}
               pr="4.5rem"
               type={show ? "text" : "password"}
               placeholder="Enter password"
               aria-describedby="password-helper-text"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <InputRightElement width="4.5rem">
               <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -65,7 +106,7 @@ const Login = () => {
 
         <Button
           padding="1rem"
-          onClick={() => console.log("pressed chakraUI")}
+          onClick={() => submitLogin()}
           title="Login"
           borderRadius=".4rem"
           color="red"
