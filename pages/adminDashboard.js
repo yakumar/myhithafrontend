@@ -234,7 +234,11 @@ const AdminDash = () => {
       newObj["cPrice"] = productMap["cPrice"];
 
       let smallArray = Object.values(newObj);
+      console.log("smallArray", smallArray);
+
       smallArray.push(cost);
+      console.log("smallArray", smallArray);
+
       bigArray.push(smallArray);
 
       console.log("bigArray", bigArray);
