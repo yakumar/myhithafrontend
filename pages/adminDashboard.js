@@ -11,6 +11,16 @@ import {
   Heading,
   IconButton,
   Icon,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  Select,
 } from "@chakra-ui/core";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -30,14 +40,15 @@ const useEnhancedEffect =
 
 const AdminDash = () => {
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [myProducts, setMyProducts] = useState([]);
 
   const [didMount, setDidMount] = useState(false);
 
   const [orderArray, setOrderArray] = useState([]);
 
   const [todayQuan, setTodayQuan] = useState([]);
-
-  const today = moment().format("DD/MM/YYYY");
 
   console.log("today", moment().format("DD/MM/YYYY"));
   useEnhancedEffect(() => {
@@ -63,9 +74,11 @@ const AdminDash = () => {
       //getTodayOrderQuantity
 
       const newArray = result.data.data.filter((val) => {
+        const today = moment().format("DD/MM/YYYY");
+
         const dD = val.order_date;
         const newD = moment(dD.toString()).format("DD/MM/YYYY");
-        // console.log("order date in new", newD);
+        console.log("order date in new", newD);
 
         return newD == today;
       });
@@ -78,7 +91,7 @@ const AdminDash = () => {
 
       setTodayQuan(todayOrderQuantities.data.data);
 
-      console.log("today Quan", todayQuan);
+      // console.log("today Quan", todayQuan);
     };
     fetchData();
     setDidMount(true);
@@ -90,6 +103,26 @@ const AdminDash = () => {
     return null;
   }
 
+  // const _editClose = () => {
+  //   _editItem();
+  //   onClose();
+  // };
+
+  // const _editItem = async (orderDetails, productsMod) => {
+  //   console.log("editing initiated");
+  //   const data = {
+  //     isAdmin: localStorage.getItem("isAdmin"),
+  //     order_id: orderDetails.order_id,
+  //     products: productsMod,
+  //   };
+  //   await axios({
+  //     method: "put",
+  //     url: "https://arcane-springs-88980.herokuapp.com/updateFinalOrder",
+  //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //     data: data,
+  //   });
+  //   router.reload();
+  // };
   // cloudinary.uploader.upload(imageUpload).then((dat) => console.log(dat));
   const renderHeader = () => {
     let headerElement = [
@@ -113,6 +146,7 @@ const AdminDash = () => {
     return (
       orderArray &&
       orderArray.map((ordery) => {
+        console.log("ordery from ordery:", ordery);
         const date = ordery.order_date;
         // const newD = moment.utc(date).format("DD/MM/YYYY");
         // const today = moment().format("DD/MM/YYYY");
@@ -127,6 +161,19 @@ const AdminDash = () => {
             <td>{ordery.customer_name}</td>
             <td>{ordery.cost_of_order}</td>
             <td>{ordery.status}</td>
+            <Box as="td">
+              <Button
+                m=".5rem"
+                onClick={() =>
+                  router.push({
+                    pathname: "/editFinalOrder",
+                    query: { order_id: ordery.order_id },
+                  })
+                }
+              >
+                Edit Order
+              </Button>
+            </Box>
 
             <Box as="td">
               <Button

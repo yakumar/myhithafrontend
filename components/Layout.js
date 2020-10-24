@@ -20,6 +20,7 @@ const Layout = (props) => {
     <Box
       overflow="hidden"
       paddingX="0rem"
+      mb={["2rem", "", "", ""]}
       // pt="1rem"
       textAlign="center"
       flex

@@ -48,6 +48,8 @@ const Login = () => {
     localStorage.setItem("isAdmin", result.data.user.isadmin);
 
     router.replace("/adminDashboard");
+    setPassword("");
+    setPhone("");
 
     console.log("result", result.data);
   };
