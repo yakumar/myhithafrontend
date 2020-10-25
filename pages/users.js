@@ -153,9 +153,10 @@ const AdminDash = () => {
     <Layout>
       <Box
         textAlign="center"
-        marginX={[".3rem", ".7rem", "8rem", "10rem"]}
-        marginLeft={["0rem", "0rem", "10rem", "23rem"]}
-        mr={[".3rem", ".7rem", "8rem", "1rem"]}
+        // marginX={[".3rem", ".7rem", "8rem", "10rem"]}
+        marginLeft={["0rem", "0rem", "10rem", "10rem"]}
+        // mr={[".3rem", "2rem", "10rem", "10rem"]}
+        mx={["0rem", "1rem", "15rem", "17rem"]}
         overflowX="scroll"
       >
         <Box>
@@ -165,7 +166,7 @@ const AdminDash = () => {
             m=".5rem"
             mt={["0rem", "0rem", "-5rem", "1rem"]}
             cursor="pointer"
-            ml={["-1rem", "0rem", "1rem", "0rem"]}
+            ml={["-1rem", "0rem", "1rem", "3rem"]}
             aria-label="Logout"
             icon="arrow-down"
             onClick={() => {
@@ -201,7 +202,11 @@ const AdminDash = () => {
           <Box
             as="table"
             id="employee"
-            ml={["6rem", "16rem", "16rem", "25rem"]}
+            mx={["0rem", "1rem", "12rem", "20rem"]}
+            ml={["3rem", "8rem", "8rem", "20rem"]}
+            mr={["0rem", "0rem", "8rem", "20rem"]}
+
+            // pr={["4rem", "10rem", "29rem", "29rem"]}
           >
             <Box as="thead" backgroundColor="bg4">
               <tr>{renderHeader()}</tr>

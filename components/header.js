@@ -12,7 +12,7 @@ const Header = (props) => {
     console.log("we are running on the server");
   }
 
-  return (
+  return localStorage.getItem("token") != null ? (
     <Box backgroundColor="bg1" h="4rem" pb={["6.5rem", "", "", ""]}>
       <Link href="/">
         <Button
@@ -64,6 +64,8 @@ const Header = (props) => {
         </Button>
       </Link>
     </Box>
+  ) : (
+    <Box backgroundColor="bg1" h="4rem" pb={["6.5rem", "", "", ""]}></Box>
   );
 };
 
