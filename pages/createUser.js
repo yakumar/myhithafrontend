@@ -51,11 +51,11 @@ const CreateUser = () => {
       <Box>
         <Box
           bg="bg2"
-          w={["15rem", "20rem", "25em", "30rem"]}
+          w={["20rem", "25rem", "30em", "38rem"]}
           h="20rem"
-          marginX={["10rem", "20rem", "25rem", "30rem"]}
+          marginX={["1rem", "6rem", "20rem", "30rem"]}
           marginY={["5rem", "6rem", "8em", "10rem"]}
-          marginLeft={["6rem", "10rem", "20rem", "25rem"]}
+          marginLeft={["2rem", "5rem", "13rem", "25rem"]}
           padding="1rem"
           textAlign="center"
           borderRadius="1rem"
@@ -67,11 +67,11 @@ const CreateUser = () => {
             <FormLabel htmlFor="Phone">Phone</FormLabel>
             <Input
               value={phone}
-              marginX="5rem"
+              marginX={["0rem", "2rem", "3rem", "5rem"]}
+              w={["16rem", "18rem", "22rem", "25rem"]}
               type="phone"
               id="phone"
               aria-describedby="email-helper-text"
-              w="16rem"
               onChange={(e) => setPhone(e.target.value)}
             />
             <FormHelperText id="email-helper-text">
@@ -79,7 +79,11 @@ const CreateUser = () => {
             </FormHelperText>
             <FormLabel htmlFor="password">password</FormLabel>
 
-            <InputGroup size="md" marginX="5rem" w="18rem">
+            <InputGroup
+              size="md"
+              marginX={["0rem", "2rem", "3rem", "5rem"]}
+              w={["16rem", "18rem", "22rem", "25rem"]}
+            >
               <Input
                 value={password}
                 pr="4.5rem"

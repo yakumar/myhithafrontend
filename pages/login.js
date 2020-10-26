@@ -74,11 +74,11 @@ const Login = () => {
           <FormLabel htmlFor="Phone">Phone</FormLabel>
           <Input
             value={phone}
-            marginX="5rem"
+            marginX={["0rem", "2rem", "3rem", "5rem"]}
+            w={["13rem", "15rem", "16rem", "18rem"]}
             type="phone"
             id="phone"
             aria-describedby="email-helper-text"
-            w="16rem"
             onChange={(e) => setPhone(e.target.value)}
           />
           <FormHelperText id="email-helper-text">
@@ -86,7 +86,11 @@ const Login = () => {
           </FormHelperText>
           <FormLabel htmlFor="password">password</FormLabel>
 
-          <InputGroup size="md" marginX="5rem" w="18rem">
+          <InputGroup
+            size="md"
+            marginX={["0rem", "2rem", "3rem", "5rem"]}
+            w={["13rem", "15rem", "16rem", "18rem"]}
+          >
             <Input
               value={password}
               pr="4.5rem"

@@ -23,7 +23,7 @@ import Order from "../components/order";
 import TodayOrderQuan from "../components/todayQuan";
 import Layout from "../components/Layout";
 
-import moment from "moment";
+import moment from "moment-timezone";
 
 const useEnhancedEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;

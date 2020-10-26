@@ -10,9 +10,11 @@ const Header = (props) => {
     localStorage.setItem("myCat", "Tom");
   } else {
     console.log("we are running on the server");
+    // localStorage.setItem("mCat", "Tom");
   }
+  // localStorage.getItem("token") != null ? (
 
-  return localStorage.getItem("token") != null ? (
+  return (
     <Box backgroundColor="bg1" h="4rem" pb={["6.5rem", "", "", ""]}>
       <Link href="/">
         <Button
@@ -64,9 +66,10 @@ const Header = (props) => {
         </Button>
       </Link>
     </Box>
-  ) : (
-    <Box backgroundColor="bg1" h="4rem" pb={["6.5rem", "", "", ""]}></Box>
   );
+  // ) : (
+  //   <Box backgroundColor="bg1" h="4rem" pb={["6.5rem", "", "", ""]}></Box>
+  // );
 };
 
 export default Header;

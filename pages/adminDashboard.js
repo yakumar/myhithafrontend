@@ -33,7 +33,8 @@ import Order from "../components/order";
 import TodayOrderQuan from "../components/todayQuan";
 import Layout from "../components/Layout";
 
-import moment from "moment";
+// import moment from "moment";
+import moment from "moment-timezone";
 
 const useEnhancedEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -77,13 +78,17 @@ const AdminDash = () => {
         const today = moment().format("DD/MM/YYYY");
 
         const dD = val.order_date;
+
+        const unixdate = moment.tz("Asia/Kolkata").format("DD/MM/YYYY");
+        console.log("Unix Date", unixdate);
+
         const newD = moment(dD.toString()).format("DD/MM/YYYY");
         console.log("order date in new", newD);
 
-        return newD == today;
+        return newD == unixdate;
       });
 
-      console.log("newArray!!!:", newArray);
+      // console.log("newArray!!!:", newArray);
       // if (!newArray.length) {
       //   // setOrderArray([]);
       // }

@@ -13,7 +13,9 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/core";
-import moment from "moment";
+// import moment from "moment";
+import moment from "moment-timezone";
+
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import { newImage } from "../images/image";
@@ -31,6 +33,7 @@ const Order = (props) => {
   const modDate = new Date(date);
 
   const newDM = moment(modDate).format("DD/MM/YYYY");
+  const unixdate = moment.tz("Asia/Kolkata").format("DD/MM/YYYY");
 
   // console.log("order date", newDM);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -136,7 +139,7 @@ const Order = (props) => {
               <h4>{props.index}</h4>
             </Box>
             <Box as="td" pr=".4rem">
-              {newDM}
+              {unixdate}
             </Box>
             <Box as="td" pr=".4rem">
               {props.order.cost_of_order}
@@ -157,7 +160,7 @@ const Order = (props) => {
                 <ModalCloseButton />
                 <ModalBody>
                   <OrderLine
-                    orderDate={newDM}
+                    orderDate={unixdate}
                     name={name}
                     phone={phone}
                     propys={props}

@@ -2,7 +2,8 @@ import React from "react";
 
 import { Box, Text, useDisclosure, Button } from "@chakra-ui/core";
 
-import moment from "moment";
+// import moment from "moment";
+import moment from "moment-timezone";
 
 const TodayQuan = (props) => {
   const fetchedDate = props.order.order_date;
@@ -20,7 +21,12 @@ const TodayQuan = (props) => {
         </Box>
         <tbody>
           <tr>
-            <td> {moment(fetchedDate.toString()).format("DD/MM/YYYY")}</td>
+            <td>
+              {" "}
+              {moment
+                .tz(fetchedDate.toString(), "Asia/Kolkata")
+                .format("DD/MM/YYYY")}
+            </td>
             <td>{props.order.name}</td>
             <td> {props.order.quantity}</td>
             <td>{props.order.quantity_type}</td>
