@@ -27,26 +27,30 @@ export class CartStore {
     if (this.cart.length > 0) {
       let myproduct = this.cart.find((pro) => pro.name == product.name);
       if (myproduct) {
-        // console.log("myproduct :", myproduct);
+        console.log("myproduct :", myproduct);
 
-        myproduct.quantity = myproduct.quantity + product.quantity;
-        myproduct.cPrice = myproduct.quantity * myproduct.price;
+        myproduct.quantity = myproduct.priceQuantity * product.weight;
+        myproduct.calcPrice = myproduct.priceQuantity * myproduct.price;
       } else {
-        product["cPrice"] = product.quantity * product.price;
+        product.quantity = product.priceQuantity * product.weight;
+
+        product["calcPrice"] = product.priceQuantity * product.price;
         this.cart.push(product);
       }
 
       this.sum = this.cart
-        .map((o) => o.cPrice)
+        .map((o) => o.calcPrice)
         .reduce((a, c) => {
           return a + c;
         });
       this.completeCart = { products: this.cart, cost: this.sum };
     } else {
-      product["cPrice"] = product.quantity * product.price;
+      product.quantity = product.priceQuantity * product.weight;
+
+      product["calcPrice"] = product.priceQuantity * product.price;
       this.cart.push(product);
 
-      this.cart.map((o) => (this.sum = o.cPrice));
+      this.cart.map((o) => (this.sum = o.calcPrice));
 
       this.completeCart = { products: this.cart, cost: this.sum };
     }

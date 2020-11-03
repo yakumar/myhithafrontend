@@ -55,7 +55,7 @@ const Order = (props) => {
       newObj["type"] = productMap["quantity_type"];
       newObj["price"] = productMap["price"];
       newObj["quantity"] = productMap["quantity"];
-      newObj["cPrice"] = productMap["cPrice"];
+      newObj["calcPrice"] = productMap["calcPrice"];
 
       let smallArray = Object.values(newObj);
       smallArray.push(cost);

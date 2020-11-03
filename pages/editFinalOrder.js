@@ -125,7 +125,7 @@ const EditFinalOrder = (props) => {
             <td>{ordery.weight}</td>
             <td>{ordery.quantity_type}</td>
             <td>{ordery.quantity}</td>
-            <td>{ordery.cPrice}</td>
+            <td>{ordery.calcPrice}</td>
             <Box as="td">
               <Button
                 m=".5rem"

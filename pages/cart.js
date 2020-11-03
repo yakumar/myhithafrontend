@@ -111,7 +111,7 @@ const Cart = () => {
                 </Heading>
 
                 <Heading as="h3" pr={["4rem", "16rem"]}>
-                  {product.quantity}
+                  {product.priceQuantity}
                 </Heading>
                 <Heading as="h2" mr="1rem" ml="-2rem">
                   *
@@ -121,7 +121,7 @@ const Cart = () => {
                   {product.price} Rs
                 </Heading>
                 <Heading as="h3" pr="2rem">
-                  {product.cPrice} Rs
+                  {product.calcPrice} Rs
                 </Heading>
               </Box>
             </Box>

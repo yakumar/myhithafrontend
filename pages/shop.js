@@ -53,7 +53,7 @@ const Shop = () => {
         "https://arcane-springs-88980.herokuapp.com/getVeg"
       );
 
-      // console.log("result", result.data.data);
+      console.log("result", result.data.data);
       //getTodayOrderQuantity
 
       // if (!newArray.length) {
@@ -112,7 +112,7 @@ const Shop = () => {
                   <ShopBox
                     name={item.name}
                     image={item.image_url}
-                    quantity={item.quantity}
+                    weight={item.quantity}
                     quantity_type={item.quantity_type}
                     price={item.each_price}
                     onBtnClick={onBtnClick}
