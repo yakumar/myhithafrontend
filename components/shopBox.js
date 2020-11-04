@@ -96,8 +96,8 @@ const ShopBox = observer((props) => {
               // console.log(`${props.name} ${quant}`);
               const product = {
                 name: props.name,
-                weight: props.quantity,
-                quantity: props.quantity,
+                weight: props.weight,
+                quantity: props.weight,
                 priceQuantity: quant,
                 price: props.price,
                 quantity_type: props.quantity_type,

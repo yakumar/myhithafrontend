@@ -21,7 +21,7 @@ import axios from "axios";
 const VegItem = (props) => {
   const router = useRouter();
 
-  console.log(props.item);
+  // console.log(props.item);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [editPrice, setEditPrice] = useState(props.item.each_price);
   const [setStock, setSetStock] = useState(props.item.in_stock);
@@ -46,7 +46,7 @@ const VegItem = (props) => {
   };
 
   const _editItem = async () => {
-    console.log("editing initiated");
+    // console.log("editing initiated");
     const data = {
       isAdmin: localStorage.getItem("isAdmin"),
       todayPrice: editPrice,

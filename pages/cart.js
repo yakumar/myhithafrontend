@@ -15,6 +15,7 @@ import { useStores } from "../hooks/use-stores";
 import { observer, useObserver, inject } from "mobx-react";
 import axios from "axios";
 import Router, { useRouter } from "next/router";
+import { observable, toJS, runInAction, computed } from "mobx";
 
 const Cart = () => {
   const { cartStore } = useStores();
@@ -25,6 +26,7 @@ const Cart = () => {
   const [email, setEmail] = useState("");
 
   const submitOrder = async () => {
+    console.log("Cartstore.cart", toJS(cartStore.cart));
     const data = {
       products: cartStore.cart,
       cost_of_order: cartStore.completeCart["cost"],
@@ -82,7 +84,7 @@ const Cart = () => {
         </Box>
 
         {cartStore.cart.map((product) => {
-          console.log("from Cart:", product);
+          console.log("from Cart:", toJS(product));
           return (
             <Box
               key={product.name}

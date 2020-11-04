@@ -21,9 +21,9 @@ const useEnhancedEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const EditFinalOrder = (props) => {
-  console.log("props from edit final", props);
+  // console.log("props from edit final", props);
   const router = useRouter();
-  console.log(router.asPath);
+  // console.log(router.asPath);
 
   const [didMount, setDidMount] = useState(false);
 
@@ -54,7 +54,7 @@ const EditFinalOrder = (props) => {
         }
       );
 
-      console.log("result", result.data.data[0].cost_of_order);
+      // console.log("result", result.data.data[0].cost_of_order);
       setProducts(result.data.data[0].order_details.veggies);
       setMyOrderId(result.data.data[0].order_id);
       setMyOrderCost(result.data.data[0].cost_of_order);
@@ -78,7 +78,7 @@ const EditFinalOrder = (props) => {
   };
 
   const submitEditFinalOrder = async () => {
-    console.log("editing initiated");
+    // console.log("editing initiated");
     const data = {
       isAdmin: localStorage.getItem("isAdmin"),
       order_id: myOrderId,
@@ -139,7 +139,7 @@ const EditFinalOrder = (props) => {
                     .reduce((a, c) => {
                       return a + c;
                     });
-                  console.log("sum", sum);
+                  // console.log("sum", sum);
 
                   setMyOrderCost(sum);
                 }}

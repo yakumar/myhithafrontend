@@ -21,7 +21,7 @@ import "jspdf-autotable";
 import { newImage } from "../images/image";
 
 const Order = (props) => {
-  console.log("From Order for PDF", props.order);
+  // console.log("From Order for PDF", props.order);
   const products = props.order.order_details.veggies;
   const address = props.order.customer_address;
   const phone = props.order.customer_phone;
@@ -35,7 +35,7 @@ const Order = (props) => {
   const newDM = moment(modDate).format("DD/MM/YYYY");
   const unixdate = moment.tz("Asia/Kolkata").format("DD/MM/YYYY");
 
-  // console.log("order date", newDM);
+  console.log("order date", newDM);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   ////**** PDF PRINT  */
@@ -45,9 +45,9 @@ const Order = (props) => {
     companyImg.src = "../images/myHitha.jpeg";
 
     orderList.forEach((productMap) => {
-      console.log("productMap :", productMap);
+      // console.log("productMap :", productMap);
       var cost = productMap.removed_stock_quantity * productMap.each_price;
-      console.log("cost of each", cost);
+      // console.log("cost of each", cost);
 
       let newObj = {};
       newObj["name"] = productMap["name"];
@@ -61,7 +61,7 @@ const Order = (props) => {
       smallArray.push(cost);
       bigArray.push(smallArray);
 
-      console.log("bigArray", bigArray);
+      // console.log("bigArray", bigArray);
     });
     var doc = new jsPDF("p", "pt");
 

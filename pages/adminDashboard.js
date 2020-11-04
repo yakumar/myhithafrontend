@@ -71,7 +71,7 @@ const AdminDash = () => {
         }
       );
 
-      console.log("result", result.data.data);
+      // console.log("result", result.data.data);
       //getTodayOrderQuantity
 
       const newArray = result.data.data.filter((val) => {
@@ -80,10 +80,10 @@ const AdminDash = () => {
         const dD = val.order_date;
 
         const unixdate = moment.tz("Asia/Kolkata").format("DD/MM/YYYY");
-        console.log("Unix Date", unixdate);
+        // console.log("Unix Date", unixdate);
 
         const newD = moment(dD.toString()).format("DD/MM/YYYY");
-        console.log("order date in new", newD);
+        // console.log("order date in new", newD);
 
         return newD == unixdate;
       });
@@ -151,7 +151,7 @@ const AdminDash = () => {
     return (
       orderArray &&
       orderArray.map((ordery) => {
-        console.log("ordery from ordery:", ordery);
+        // console.log("ordery from ordery:", ordery);
         const date = ordery.order_date;
         // const newD = moment.utc(date).format("DD/MM/YYYY");
         // const today = moment().format("DD/MM/YYYY");
@@ -239,14 +239,14 @@ const AdminDash = () => {
       newObj["calcPrice"] = productMap["calcPrice"];
 
       let smallArray = Object.values(newObj);
-      console.log("smallArray", smallArray);
+      // console.log("smallArray", smallArray);
 
       smallArray.push(cost);
-      console.log("smallArray", smallArray);
+      // console.log("smallArray", smallArray);
 
       bigArray.push(smallArray);
 
-      console.log("bigArray", bigArray);
+      // console.log("bigArray", bigArray);
     });
     var doc = new jsPDF("p", "pt");
 

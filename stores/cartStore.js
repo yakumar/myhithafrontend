@@ -25,6 +25,9 @@ export class CartStore {
     // console.log("cart arr1:", this.cart);
 
     if (this.cart.length > 0) {
+      console.log("from store product WEIGHT =>", product.weight);
+      console.log("from store product quantity =>", product.quantity);
+
       let myproduct = this.cart.find((pro) => pro.name == product.name);
       if (myproduct) {
         console.log("myproduct :", myproduct);
@@ -45,6 +48,9 @@ export class CartStore {
         });
       this.completeCart = { products: this.cart, cost: this.sum };
     } else {
+      console.log("from store product WEIGHT =>", product.weight);
+      console.log("from store product quantity =>", product.quantity);
+
       product.quantity = product.priceQuantity * product.weight;
 
       product["calcPrice"] = product.priceQuantity * product.price;
@@ -55,7 +61,7 @@ export class CartStore {
       this.completeCart = { products: this.cart, cost: this.sum };
     }
 
-    // console.log("cart arr:", this.cart);
+    console.log("cart arr completeCart:", this.cart.completeCart);
     // console.log("complete cart", this.completeCart);
 
     return this.cart, this.cart.completeCart;
